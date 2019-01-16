@@ -423,7 +423,11 @@ function injectJson_setup_connection_with_extension() {
                 }
             }
             data_for_extension.requested_json = {};
-            pull_json_safe_stringify(data_for_extension.requested_json, requested_json, 7);
+            var max_depth_of_copy = 7;
+            if (requested_data_item.depth) {
+                max_depth_of_copy = requested_data_item.depth;
+            }
+            pull_json_safe_stringify(data_for_extension.requested_json, requested_json, max_depth_of_copy);
             data_for_extension.original_request = original_request;
         }
         if (chrome && chrome.runtime && chrome.runtime.sendMessage) {
