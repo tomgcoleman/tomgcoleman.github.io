@@ -246,7 +246,9 @@ function get_request() {
 // cut off at given depth
 var pull_json_safe_stringify = function(result, obj, depth, msg) {
     if (!msg) {
-        debugger;
+        if (localHost.stopOnJsonStringify) {
+            debugger;
+        }
         console.log('enter safe strigify');
     }
     if (typeof(result) !== 'object') return;
